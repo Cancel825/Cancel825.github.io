@@ -1,65 +1,185 @@
-```html
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My First Website</title>
+    <title>My Cool Website</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
+            min-height: 100vh;
             font-family: Arial, sans-serif;
             color: white;
             text-align: center;
+            overflow: hidden;
 
-            background: linear-gradient(135deg, #141e30, #243b55);
-            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, #3b0a75, transparent 30%),
+                radial-gradient(circle at 80% 80%, #005c97, transparent 30%),
+                #050816;
+        }
+
+        /* Glowing background circles */
+        .glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite alternate;
+        }
+
+        .glow.one {
+            background: #8a2be2;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow.two {
+            background: #00c6ff;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(80px, -50px);
+            }
         }
 
         .container {
-            padding-top: 100px;
+            position: relative;
+            z-index: 2;
+            padding: 120px 20px;
         }
 
         h1 {
-            font-size: 50px;
-            margin-bottom: 10px;
+            font-size: 60px;
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 0 10px #00c6ff,
+                0 0 25px #00c6ff,
+                0 0 50px #0072ff;
+
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                text-shadow:
+                    0 0 10px #00c6ff,
+                    0 0 20px #00c6ff;
+            }
+
+            to {
+                text-shadow:
+                    0 0 20px #00c6ff,
+                    0 0 40px #0072ff,
+                    0 0 70px #0072ff;
+            }
         }
 
         p {
             font-size: 20px;
+            color: #d9eaff;
         }
 
         .button {
             display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
-            background: #00c6ff;
+            margin-top: 30px;
+            padding: 16px 35px;
+
             color: white;
             text-decoration: none;
-            border-radius: 10px;
             font-size: 18px;
+            font-weight: bold;
+
+            border: 2px solid #00c6ff;
+            border-radius: 12px;
+
+            box-shadow:
+                0 0 10px #00c6ff,
+                inset 0 0 10px rgba(0, 198, 255, 0.3);
+
+            transition: 0.3s;
         }
 
         .button:hover {
-            background: #0072ff;
+            transform: scale(1.08);
+
+            background: #00c6ff;
+            color: #050816;
+
+            box-shadow:
+                0 0 15px #00c6ff,
+                0 0 35px #00c6ff,
+                0 0 60px #0072ff;
+        }
+
+        .card {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 25px;
+
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 0 30px rgba(0, 198, 255, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            p {
+                font-size: 17px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
     <div class="container">
+
         <h1>Welcome to My Website 🚀</h1>
 
-        <p>I made this website myself!</p>
+        <p>Welcome to my corner of the internet.</p>
 
-        <p>I'm learning HTML and CSS.</p>
+        <div class="card">
+            <h2>✨ About This Site</h2>
 
-        <a class="button" href="https://github.com">
-            My GitHub
-        </a>
+            <p>
+                I built this website with HTML and CSS
+                and I'm learning how to make it even cooler!
+            </p>
+
+            <a class="button" href="https://github.com">
+                Visit My GitHub
+            </a>
+        </div>
+
     </div>
 
 </body>
 </html>
 ```
-
