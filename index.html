@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,108 +15,59 @@
             font-family: Arial, sans-serif;
             color: white;
             text-align: center;
-            overflow: hidden;
-
             background:
                 radial-gradient(circle at 20% 20%, #3b0a75, transparent 30%),
                 radial-gradient(circle at 80% 80%, #005c97, transparent 30%),
                 #050816;
         }
 
-        /* Glowing background circles */
-        .glow {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite alternate;
-        }
-
-        .glow.one {
-            background: #8a2be2;
-            top: 10%;
-            left: 10%;
-        }
-
-        .glow.two {
-            background: #00c6ff;
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(80px, -50px);
-            }
-        }
-
         .container {
             position: relative;
             z-index: 2;
-            padding: 120px 20px;
+            padding: 100px 20px;
         }
 
         h1 {
-            font-size: 60px;
-            margin-bottom: 15px;
-
+            font-size: 55px;
             text-shadow:
                 0 0 10px #00c6ff,
-                0 0 25px #00c6ff,
-                0 0 50px #0072ff;
-
-            animation: pulse 2s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from {
-                text-shadow:
-                    0 0 10px #00c6ff,
-                    0 0 20px #00c6ff;
-            }
-
-            to {
-                text-shadow:
-                    0 0 20px #00c6ff,
-                    0 0 40px #0072ff,
-                    0 0 70px #0072ff;
-            }
+                0 0 30px #0072ff;
         }
 
         p {
-            font-size: 20px;
+            font-size: 19px;
             color: #d9eaff;
         }
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 16px 35px;
+        /* Buttons */
 
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .button {
+            padding: 14px 25px;
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
 
             border: 2px solid #00c6ff;
             border-radius: 12px;
+            background: rgba(0, 198, 255, 0.08);
 
-            box-shadow:
-                0 0 10px #00c6ff,
-                inset 0 0 10px rgba(0, 198, 255, 0.3);
+            box-shadow: 0 0 10px #00c6ff;
 
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .button:hover {
-            transform: scale(1.08);
+            transform: translateY(-5px) scale(1.05);
 
             background: #00c6ff;
             color: #050816;
@@ -127,10 +78,12 @@
                 0 0 60px #0072ff;
         }
 
-        .card {
-            max-width: 600px;
+        /* About Me */
+
+        #about {
+            max-width: 650px;
             margin: 40px auto;
-            padding: 25px;
+            padding: 30px;
 
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -139,47 +92,115 @@
             backdrop-filter: blur(10px);
 
             box-shadow:
-                0 0 30px rgba(0, 198, 255, 0.15);
+                0 0 25px rgba(0, 198, 255, 0.25);
+
+            /* Hidden at first */
+            display: none;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 40px;
+        #about.show {
+            display: block;
+            animation: appear 0.5s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
 
-            p {
-                font-size: 17px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
+
+        .close-button {
+            margin-top: 15px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #ff4d6d;
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="glow one"></div>
-    <div class="glow two"></div>
-
     <div class="container">
 
         <h1>Welcome to My Website 🚀</h1>
 
-        <p>Welcome to my corner of the internet.</p>
+        <p>Welcome to my corner of the internet!</p>
 
-        <div class="card">
-            <h2>✨ About This Site</h2>
+        <!-- Buttons -->
 
-            <p>
-                I built this website with HTML and CSS
-                and I'm learning how to make it even cooler!
-            </p>
+        <div class="buttons">
 
-            <a class="button" href="https://github.com">
-                Visit My GitHub
+            <button class="button" onclick="showAbout()">
+                👤 About Me
+            </button>
+
+            <a class="button" href="#">
+                🚀 Projects
             </a>
+
+            <a class="button" href="#">
+                📧 Contact
+            </a>
+
         </div>
 
+
+        <!-- About Me Section -->
+
+        <section id="about">
+
+            <h2>👋 About Me</h2>
+
+            <p>
+                Hi! I'm [YOUR NAME].
+            </p>
+
+            <p>
+                Welcome to my website! I'm learning how to
+                build websites using HTML, CSS, and JavaScript.
+            </p>
+
+            <p>
+                Some things I enjoy are [YOUR HOBBIES],
+                [YOUR INTERESTS], and [SOMETHING YOU LIKE].
+            </p>
+
+            <p>
+                Thanks for visiting my website! 🚀
+            </p>
+
+            <button class="close-button" onclick="hideAbout()">
+                ✕ Close
+            </button>
+
+        </section>
+
     </div>
+
+
+    <script>
+        function showAbout() {
+            document.getElementById("about").classList.add("show");
+        }
+
+        function hideAbout() {
+            document.getElementById("about").classList.remove("show");
+        }
+    </script>
 
 </body>
 </html>
 ```
+
+```
+
